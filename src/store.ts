@@ -1,15 +1,11 @@
-import {
-  combineReducers,
-  configureStore,
-  createSlice,
-} from "@reduxjs/toolkit";
+import { combineReducers, configureStore, createSlice } from "@reduxjs/toolkit";
 
 interface SliceState {
-    fakeProp: boolean;
+  fakeProp: boolean;
 }
 const initialState: SliceState = {
-    fakeProp: false,
-}
+  fakeProp: false,
+};
 
 const sliceWithExtraReducersAfterSlice = createSlice({
   name: "sliceWithExtraReducersAfter",
@@ -21,21 +17,21 @@ const sliceWithExtraReducersAfterSlice = createSlice({
 });
 
 const sliceWithExtraReducersBeforeSlice = createSlice({
-    name: "sliceWithExtraReducersBefore",
-    initialState,
-    reducers: {
-      fakeReducer: (state) => {},
-    },
-    extraReducers: (builder) => {},
-  });
+  name: "sliceWithExtraReducersBefore",
+  initialState,
+  reducers: {
+    fakeReducer: (state) => {},
+  },
+  extraReducers: (builder) => {},
+});
 
-  const sliceWithoutExtraReducersSlice = createSlice({
-    name: "sliceWithoutExtraReducers",
-    initialState,
-    reducers: {
-      fakeReducer: (state) => {},
-    },
-  });
+const sliceWithoutExtraReducersSlice = createSlice({
+  name: "sliceWithoutExtraReducers",
+  initialState,
+  reducers: {
+    fakeReducer: (state) => {},
+  },
+});
 
 const rootReducer = combineReducers({
   sliceWithExtraReducersAfter: sliceWithExtraReducersAfterSlice.reducer,
