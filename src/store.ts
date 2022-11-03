@@ -10,20 +10,29 @@ const initialState: SliceState = {
 const sliceWithExtraReducersAfterSlice = createSlice({
   name: "sliceWithExtraReducersAfter",
   initialState,
+  reducers: {
+    fakeReducer: (state) => {},
+  },
+  extraReducers: (builder) => {},
+});
+
+const sliceWithExtraReducersBeforeSlice = createSlice({
+  name: "sliceWithExtraReducersBefore",
+  initialState,
   extraReducers: (builder) => {},
   reducers: {
     fakeReducer: (state) => {},
   },
 });
 
-const sliceWithExtraReducersBeforeSlice = createSlice({
-  name: "sliceWithExtraReducersBefore",
+const sliceWithReducerNoStateAccessSlice = createSlice({
+  name: "sliceWithReducerNoStateAccess",
   initialState,
   reducers: {
-    fakeReducer: (state) => {},
+    fakeReducer: () => {},
   },
-  extraReducers: (builder) => {},
-});
+  extraReducers: (buidler) => {},
+})
 
 const sliceWithoutExtraReducersSlice = createSlice({
   name: "sliceWithoutExtraReducers",
@@ -36,6 +45,7 @@ const sliceWithoutExtraReducersSlice = createSlice({
 const rootReducer = combineReducers({
   sliceWithExtraReducersAfter: sliceWithExtraReducersAfterSlice.reducer,
   sliceWithExtraReducersBefore: sliceWithExtraReducersBeforeSlice.reducer,
+  sliceWithReducerNoStateAccess: sliceWithReducerNoStateAccessSlice.reducer,
   sliceWithoutExtraReducers: sliceWithoutExtraReducersSlice.reducer,
 });
 
